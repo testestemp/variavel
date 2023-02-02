@@ -2,6 +2,7 @@
     let id/*idade*/, np/*nome do pacinete */, qvppm /*quantidade de vez paciente passo no medico*/
     let qme/*quantidade de medicamento no estoque*/, qmepp /*quantidae de medicamento para paciente */
     let menu
+    let dnp = [ ]
     
     menu = prompt("qual e o dado que voce quer acessar ? 0-Exit 1-Cadastro,2- Controle de Estoque" )
     while(menu != 0) {
@@ -10,6 +11,8 @@
             id = prompt("Qual e idade do pacinete ?")
             qvppm = prompt("quantas vezes o paciente passor no medico ?")
             qmepp = prompt("quantidade de medicamento para paciente ?")
+            /*para armazena detro arry*/
+            dnp.push(np)
 
             if(qvppm >= 5){
                 console.log("Esse pacinete é um case urgente!")
@@ -23,6 +26,7 @@
             console.log("idade do paciente cadastro: " + id)
             console.log("Quantidade e vezes que passou no médico: " + qvppm)
             console.log("Quantidade de medicamento para paciente: " + qmepp)
+            console.log("Nomes dos pacinetes: " + dnp)
         
         menu = prompt("qual e o dado que voce quer acessar ? 0-Exit 1-Cadastro,2- Controle de Estoque" )
         }else if(menu == 2) {
