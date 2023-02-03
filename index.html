@@ -2,47 +2,63 @@
     let id/*idade*/, np/*nome do pacinete */, qvppm /*quantidade de vez paciente passo no medico*/
     let qme/*quantidade de medicamento no estoque*/, qmepp /*quantidae de medicamento para paciente */
     let menu
-    let dnp = [ ]
-    
-    menu = prompt("qual e o dado que voce quer acessar ? 0-Exit 1-Cadastro,2- Controle de Estoque" )
+    let dnp = []
+    let p ={} /*p pacinete*/
+
+    function menu() {
+        menu = prompt("Qual e o dado que voce quer acessar ? 0-Exit 1-Cadastro 2- Controle de Estoque" )            
+    }
+
+    function vcu(qvppm, id) {
+        if(qvppm >= 5){
+          console.log("Esse pacinete é um case urgente!")
+        } else if(id > 60){
+            console.log("Esse paciente é um caso urgente!")
+        } else {
+            console.log("Esse paciente NÃO é um caso urgente")
+        }
+    }
+
+    function ce(qme,qmepp) {
+        while(qme > 0) {
+            qmepp = prompt("Quantidae de medicamento, que voce que da para paciente ?")    
+            qme = qme - qmepp 
+            console.log("quantidade de medicamento restantes: " + qme)
+        }
+    }
+
+    menu()
+
     while(menu != 0) {
         if(menu == 1) {
             np = prompt("Qual e nome do pacinte ?")
             id = prompt("Qual e idade do pacinete ?")
-            qvppm = prompt("quantas vezes o paciente passor no medico ?")
-            qmepp = prompt("quantidade de medicamento para paciente ?")
-            /*para armazena detro arry*/
-            dnp.push(np)
+            qvppm = prompt("Quantas vezes passou no médico")
 
-            if(qvppm >= 5){
-                console.log("Esse pacinete é um case urgente!")
-            } else if(id > 60){
-                console.log("Esse paciente é um caso urgente!")
-            } else {
-                console.log("Esse paciente NÃO é um caso urgente")
+            p = {
+                np,
+                id,
+                qvppm
             }
+            
+            dnp.push(p)
+
+            vcu(qvppm, id)
 
             console.log("Nome do pacinete cadastrado: " + np)
             console.log("idade do paciente cadastro: " + id)
             console.log("Quantidade e vezes que passou no médico: " + qvppm)
-            console.log("Quantidade de medicamento para paciente: " + qmepp)
-            console.log("Nomes dos pacinetes: " + dnp)
-        
-        menu = prompt("qual e o dado que voce quer acessar ? 0-Exit 1-Cadastro,2- Controle de Estoque" )
+            console.log(p)
+            menu()
         }else if(menu == 2) {
             qme = prompt("quantidae de medicamento no estoque ?")
 
-            while(qme > 0) {
-            qmepp = prompt("Quantidae de medicamento, que voce que da para paciente ?")    
-            qme = qme - qmepp 
-            console.log("quantidade de medicamento restantes: " + qme)
-            }
-
+            ce()
+            
             if(qme <= 0){
                 console.log("O estoque de medicamento acabou")
             }
-            menu = prompt("qual e o dado que voce quer acessar ? 0-Exit 1-Cadastro,2- Controle de Estoque" )
+            menu()
         }
-    }
-    
+}
 </script>
